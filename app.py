@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://default:************@ep-still-voice-77631904.us-east-1.postgres.vercel-storage.com:5432/verceldb'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
@@ -49,4 +49,5 @@ def delete(todo_id):
     return redirect(url_for("index"))
 
 if __name__ == "__main__":
+        db.create_all() 
         app.run(debug=True)
